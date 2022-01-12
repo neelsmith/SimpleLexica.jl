@@ -14,6 +14,12 @@ function show(io::IO, lexarticle::LexiconArticle)
     print(io, "<", lexarticle.urn, "> ", lexarticle.lemma)
 end
 
+"""Override `==` for `LexiconArticle`.
+$(SIGNATURES)
+"""
+function ==(lex1::LexiconArticle, lex2::LexiconArticle)
+   lex1.seq == lex2.seq && lex1.urn == lex2.urn && lex1.lemma == lex2.lemma && lex1.article == lex2.article
+end
 
 # CitableTrait:
 """Singleton type for value of `CitableTrait`.
@@ -82,10 +88,11 @@ $(SIGNATURES)
 function urnsimilar(u::Cite2Urn, article::LexiconArticle)
     urnsimilar(u, article.urn)
 end
-####
 
 
 
+
+#### CEX trait
 """Singleton type for value of `CexTrait`.
 $(SIGNATURES)
 """
@@ -97,9 +104,15 @@ function cextrait(::Type{LexiconArticle})
     LexiconArticleCex()
 end
 
+"""Serialize `article` to delimited-text format.
+$(SIGNATURES)
+"""
+function cex(article::LexiconArticle; delimiter = "|")
+    join([article.seq, article.urn, article.lemma,article.article], delimiter)
+end
+
 
 # Hard-coded for field sequence in gh repo!
-
 """Create LexiconArticle from cex.
 $(SIGNATURES)
 """

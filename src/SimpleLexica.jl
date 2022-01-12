@@ -1,6 +1,7 @@
 module SimpleLexica
 
 import Base: show
+import Base: ==
 
 using CiteEXchange
 using CitableObject
@@ -18,9 +19,9 @@ import CitableBase: urncontains
 import CitableBase: urnsimilar
 
 
-import CitableBase: citablecollectiontrait
 import CitableBase: cextrait
 import CitableBase: fromcex
+import CitableBase: cex
 
 using Documenter, DocStringExtensions
 
