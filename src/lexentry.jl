@@ -14,6 +14,12 @@ function show(io::IO, lexarticle::LexiconArticle)
     print(io, "<", lexarticle.urn, "> ", lexarticle.lemma)
 end
 
+"""Override `==` for `LexiconArticle`.
+$(SIGNATURES)
+"""
+function ==(lex1::LexiconArticle, lex2::LexiconArticle)
+   lex1.seq == lex2.seq && lex1.urn == lex2.urn && lex1.lemma == lex2.lemma && lex1.article == lex2.article
+end
 
 # CitableTrait:
 """Singleton type for value of `CitableTrait`.
@@ -49,11 +55,44 @@ function label(article::LexiconArticle)
 end
 
 
+###
+"""Singleton type for value of `UrnComparisonTrait`.
+$(SIGNATURES)
+"""
+struct LexArticleComparable <: UrnComparisonTrait end
+"""Set value of `UrnComparisonTrait` for `LexiconArticle`.
+$(SIGNATURES)
+"""
+function urncomparisontrait(::Type{LexiconArticle})
+    LexArticleComparable()
+end
 
-####
+
+"""True if `u` equals URN of `article`.
+$(SIGNATURES)
+"""
+function urnequals(u::Cite2Urn, article::LexiconArticle)
+    urnequals(u, article.urn)
+end
+
+"""True if `u` contains URN of `article`.
+$(SIGNATURES)
+"""
+function urncontains(u::Cite2Urn, article::LexiconArticle)
+    urncontains(u, article.urn)
+end
+
+"""True if `u` and URN of `article` are URN similar.
+$(SIGNATURES)
+"""
+function urnsimilar(u::Cite2Urn, article::LexiconArticle)
+    urnsimilar(u, article.urn)
+end
 
 
 
+
+#### CEX trait
 """Singleton type for value of `CexTrait`.
 $(SIGNATURES)
 """
@@ -65,9 +104,15 @@ function cextrait(::Type{LexiconArticle})
     LexiconArticleCex()
 end
 
+"""Serialize `article` to delimited-text format.
+$(SIGNATURES)
+"""
+function cex(article::LexiconArticle; delimiter = "|")
+    join([article.seq, article.urn, article.lemma,article.article], delimiter)
+end
+
 
 # Hard-coded for field sequence in gh repo!
-
 """Create LexiconArticle from cex.
 $(SIGNATURES)
 """
