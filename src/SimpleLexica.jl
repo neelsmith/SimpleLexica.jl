@@ -7,6 +7,9 @@ using CitableObject
 
 using CitableBase
 import CitableBase: citabletrait
+import CitableBase: urntype
+import CitableBase: urn
+import CitableBase: label
 
 import CitableBase: citablecollectiontrait
 import CitableBase: cextrait

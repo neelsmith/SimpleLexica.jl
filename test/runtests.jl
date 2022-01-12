@@ -1,4 +1,5 @@
 using SimpleLexica
+using CitableBase
 using CitableObject
 using Test
 

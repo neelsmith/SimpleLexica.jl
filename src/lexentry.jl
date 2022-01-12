@@ -7,6 +7,15 @@ struct LexiconArticle <: Citable
     article::AbstractString
 end
 
+"""Override `show` for `LexiconArticle`.
+$(SIGNATURES)
+"""
+function show(io::IO, lexarticle::LexiconArticle)
+    print(io, "<", lexarticle.urn, "> ", lexarticle.lemma)
+end
+
+
+# CitableTrait:
 """Singleton type for value of `CitableTrait`.
 $(SIGNATURES)
 """
@@ -17,6 +26,32 @@ $(SIGNATURES)
 function citabletrait(::Type{LexiconArticle})
     LexiconArticleCitable()
 end
+
+"""Define URN type of LexiconArticle.
+$(SIGNATURES)
+"""
+function urntype(article::LexiconArticle)
+    Cite2Urn
+end
+
+"""Define URN type of LexiconArticle.
+$(SIGNATURES)
+"""
+function urn(article::LexiconArticle)
+    article.urn
+end
+
+"""Define URN type of LexiconArticle.
+$(SIGNATURES)
+"""
+function label(article::LexiconArticle)
+    string(article)
+end
+
+
+
+####
+
 
 
 """Singleton type for value of `CexTrait`.
