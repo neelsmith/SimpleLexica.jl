@@ -7,7 +7,6 @@
     @test dupe == lsjn4
 end
 
-
 @testset "Test citable trait for LexiconArticle" begin
     n4 = Cite2Urn("urn:cite2:hmt:lsj.chicago_md:n4")
     lsjn4 = LexiconArticle(5, n4, "ἃ ἃ", "**ἃ ἃ** or ἇ ἇ, to express laughter, `A` **ha ha**, E. *Cyc.* 157, Pl.Com. 16 (prob. l.), etc.; ἃ ἃ δασυνθὲν γέλωτα δηλοῖ Hsch., Phot., Eust. 855.19." )
@@ -18,7 +17,7 @@ end
     @test label(lsjn4) == "<urn:cite2:hmt:lsj.chicago_md:n4> ἃ ἃ"
 end
 
-
+# https://raw.githubusercontent.com/Eumaeus/cite_lsj_cex/master/lsj_chicago.cex
 #cexs = "8#urn:cite2:hmt:lsj.chicago_md:n7#ἀάβακτοι·#**ἀάβακτοι** ἀβλαβεῖς, Hsch.; cf. ἀάβηκτον· μέλαν, ἀβλαβές, *Et.Gud.* ( -βυκτον Cyr.)"
     #lsjn7 = fromcex(cexs, LexiconArticle, delimiter = "#")
  
@@ -40,4 +39,5 @@ alldatacex = join(lsjblock.lines, "\n") * "\n"
 lsj = fromcex(alldatacex, Lexicon, delimiter = "#")
 
 
+https://raw.githubusercontent.com/Eumaeus/cex_lewis_and_short/master/ls.cex
 =#
