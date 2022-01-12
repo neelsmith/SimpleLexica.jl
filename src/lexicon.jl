@@ -1,8 +1,20 @@
 
-
+"""A lexicon comprising a list of simple `LexiconArticle`s.
+"""
 struct Lexicon
     entries::Vector{LexiconArticle}
 end
+
+"""Override `show` for `Lexicon`.
+$(SIGNATURES)
+"""
+function show(io::IO, lexicon::Lexicon)
+    print(io, "Lexicon with ", length(lexicon.entries), " articles.")
+end
+
+
+
+
 
 
 struct CitableLexicon <: CitableCollectionTrait end
