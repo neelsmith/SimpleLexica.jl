@@ -11,6 +11,13 @@ import CitableBase: urntype
 import CitableBase: urn
 import CitableBase: label
 
+
+import CitableBase: urncomparisontrait
+import CitableBase: urnequals
+import CitableBase: urncontains
+import CitableBase: urnsimilar
+
+
 import CitableBase: citablecollectiontrait
 import CitableBase: cextrait
 import CitableBase: fromcex

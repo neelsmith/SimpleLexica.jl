@@ -49,7 +49,39 @@ function label(article::LexiconArticle)
 end
 
 
+###
+"""Singleton type for value of `UrnComparisonTrait`.
+$(SIGNATURES)
+"""
+struct LexArticleComparable <: UrnComparisonTrait end
+"""Set value of `UrnComparisonTrait` for `LexiconArticle`.
+$(SIGNATURES)
+"""
+function urncomparisontrait(::Type{LexiconArticle})
+    LexArticleComparable()
+end
 
+
+"""True if `u` equals URN of `article`.
+$(SIGNATURES)
+"""
+function urnequals(u::Cite2Urn, article::LexiconArticle)
+    urnequals(u, article.urn)
+end
+
+"""True if `u` contains URN of `article`.
+$(SIGNATURES)
+"""
+function urncontains(u::Cite2Urn, article::LexiconArticle)
+    urncontains(u, article.urn)
+end
+
+"""True if `u` and URN of `article` are URN similar.
+$(SIGNATURES)
+"""
+function urnsimilar(u::Cite2Urn, article::LexiconArticle)
+    urnsimilar(u, article.urn)
+end
 ####
 
 
