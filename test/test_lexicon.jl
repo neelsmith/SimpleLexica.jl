@@ -6,4 +6,6 @@
     lexicon = Lexicon([lsjn4, lsjn7])
     @test lexicon isa Lexicon
     @test string(lexicon) == "Lexicon with 2 articles."
+    @test citablecollectiontrait(typeof(lexicon)) == SimpleLexica.CitableLexicon()
+    @test citablecollection(lexicon)
 end

@@ -13,11 +13,13 @@ function show(io::IO, lexicon::Lexicon)
 end
 
 
-
-
-
-
+"Singleton type for value of CitableCollectionTrait"
 struct CitableLexicon <: CitableCollectionTrait end
+
+"""
+Set value of `CitableCollectionTrait` for `Lexicon`.
+$(SIGNATURES)
+"""
 function citablecollectiontrait(::Type{Lexicon})
     CitableLexicon()
 end

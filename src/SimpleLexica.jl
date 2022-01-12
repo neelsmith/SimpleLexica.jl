@@ -23,6 +23,10 @@ import CitableBase: cextrait
 import CitableBase: fromcex
 import CitableBase: cex
 
+
+import CitableBase: citablecollectiontrait
+
+
 using Documenter, DocStringExtensions
 
 export LexiconArticle
