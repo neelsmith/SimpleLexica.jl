@@ -1,0 +1,9 @@
+name = "SimpleLexica"
+uuid = "8970d5fd-81b2-46cd-bbc5-7585a55eff67"
+authors = ["Neel Smith  <dnsmith.neel@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+CitableBase = "d6f014bd-995c-41bd-9893-703339864534"
+CitableObject = "e2b2f5ea-1cd8-4ce8-9b2b-05dad64c2a57"
+CiteEXchange = "e2e9ead3-1b6c-4e96-b95f-43e6ab899178"
