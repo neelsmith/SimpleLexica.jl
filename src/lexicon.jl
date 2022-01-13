@@ -92,3 +92,56 @@ $(SIGNATURES)
 function urnsimilar(u::Cite2Urn, lexicon::Lexicon)
     filter(item -> urnsimilar(item.urn, u), lexicon.entries)
 end
+
+
+# Iteration
+"""Iterate `lexicon` with no state.
+$(SIGNATURES)
+"""
+function iterate(lexicon::Lexicon)
+    isempty(lexicon.entries) ? nothing : (lexicon.entries[1], 2)
+end
+
+"""Iterate `lexicon` with state parameter.
+$(SIGNATURES)
+"""
+function iterate(lexicon::Lexicon, state)
+    state > length(lexicon.entries) ? nothing : (lexicon.entries[state], state + 1)
+end
+
+"""Number of entries in `lexicon`.
+$(SIGNATURES)
+"""
+function length(lexicon::Lexicon)
+    length(lexicon.entries)
+end
+
+"""Type of elements in `lexicon`.
+$(SIGNATURES)
+"""
+function eltype(lexicon::Lexicon)
+    LexiconArticle
+end
+
+
+# Implement Tables.jl interface
+"""Define `Lexicon` as implementing `Tables`.
+$(SIGNATURES)
+"""
+function istable(lexicon::Lexicon)
+    true
+end
+
+"""Implement `rows` function for `Lexicon`.
+$(SIGNATURES)
+"""
+function rows(lexicon::Lexicon)
+    Tables.rows(lexicon.passages)
+end
+
+"""Implement `columns` function for `Lexicon`.
+$(SIGNATURES)
+"""
+function columns(lexicon::Lexicon)
+    Tables.columns(lexicon.passages)
+end

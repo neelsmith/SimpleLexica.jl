@@ -3,6 +3,10 @@ module SimpleLexica
 import Base: show
 import Base: ==
 
+import Base: iterate
+import Base: length
+import Base: eltype
+
 using CiteEXchange
 using CitableObject
 
