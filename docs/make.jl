@@ -16,7 +16,11 @@ using Documenter, DocStringExtensions, CitableBase
 makedocs(
     sitename = "SimpleLexica.jl",
     pages = [
-        "Home" => "index.md"
+        "Home" => "index.md",
+        "User's guide"=> Any[
+            "Motivation and background" => "why.md"
+        ],
+        "API documentation" => "api.md"
     ]
     )
 
