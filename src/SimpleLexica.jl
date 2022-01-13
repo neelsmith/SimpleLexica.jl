@@ -23,16 +23,19 @@ import CitableBase: cextrait
 import CitableBase: fromcex
 import CitableBase: cex
 
-
 import CitableBase: citablecollectiontrait
-
 
 using Documenter, DocStringExtensions
 
 export LexiconArticle
 export Lexicon
 
+export lsj
+export lewis_short
+
 include("lexentry.jl")
 include("lexicon.jl")
+include("lewisshort.jl")
+include("lsj.jl")
 
 end # module
