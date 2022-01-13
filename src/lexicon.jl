@@ -12,6 +12,7 @@ function show(io::IO, lexicon::Lexicon)
     print(io, "Lexicon with ", length(lexicon.entries), " articles.")
 end
 
+# Collectoin trait
 
 "Singleton type for value of CitableCollectionTrait"
 struct CitableLexicon <: CitableCollectionTrait end
@@ -24,6 +25,8 @@ function citablecollectiontrait(::Type{Lexicon})
     CitableLexicon()
 end
 
+
+# CEX trait
 "Singleton type for value of `CexTrait`"
 struct LexiconCex <: CexTrait end
 
@@ -55,3 +58,37 @@ function fromcex(trait::LexiconCex, cexsrc::AbstractString, T;
     Lexicon(entries)
 end
 
+
+# URN comparison trait
+"Singleton type for value of `UrnComparisonTrait`."
+struct LexiconComparable <: UrnComparisonTrait end
+"""Define value of `urncomparisontrait` for `Lexicon`.
+$(SIGNATURES)
+"""
+function urncomparisontrait(::Type{Lexicon})
+    LexiconComparable()
+end
+
+
+"""Filter `lexicon` for entries with urn matching `u` for equality.
+$(SIGNATURES)
+"""
+function urnequals(u::Cite2Urn, lexicon::Lexicon)
+    filter(item -> urnequals(item.urn, u), lexicon.entries)
+end
+
+
+"""Filter `lexicon` for entries with urn matching `u` for containment.
+$(SIGNATURES)
+"""
+function urncontains(u::Cite2Urn, lexicon::Lexicon)
+    filter(item -> urncontains(item.urn, u), lexicon.entries)
+end
+
+
+"""Filter `lexicon` for entries with urn matching `u` for similarity.
+$(SIGNATURES)
+"""
+function urnsimilar(u::Cite2Urn, lexicon::Lexicon)
+    filter(item -> urnsimilar(item.urn, u), lexicon.entries)
+end
