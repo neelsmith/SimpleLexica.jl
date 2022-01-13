@@ -41,10 +41,9 @@ function lexicon(linelist; delimiter = "#")
     Lexicon(entries)
 end
 
-
 """Extract lemmata from a lexicon.
 $(SIGNATURES)
 """
-function lemmata(lexicon::Lexicon)
-    map(artcl -> lemma(artcl), lexicon)
+function lemmata(lex::Lexicon)
+    map(artcl -> lemma(artcl), lex)
 end

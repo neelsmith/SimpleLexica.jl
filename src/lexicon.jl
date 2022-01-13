@@ -136,14 +136,14 @@ end
 $(SIGNATURES)
 """
 function rows(lexicon::Lexicon)
-    Tables.rows(lexicon.passages)
+    Tables.rows(lexicon.entries)
 end
 
 """Implement `columns` function for `Lexicon`.
 $(SIGNATURES)
 """
 function columns(lexicon::Lexicon)
-    Tables.columns(lexicon.passages)
+    Tables.columns(lexicon.entries)
 end
 
 

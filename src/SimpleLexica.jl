@@ -29,10 +29,12 @@ import CitableBase: cex
 
 import CitableBase: citablecollectiontrait
 
-using Tables, TableOperations
+using Tables
+#=
+using TableOperations
 import TableOperations: map
 import TableOperations: filter
-
+=#
 
 
 using Documenter, DocStringExtensions
