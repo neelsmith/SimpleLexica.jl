@@ -29,6 +29,12 @@ import CitableBase: cex
 
 import CitableBase: citablecollectiontrait
 
+using Tables, TableOperations
+import TableOperations: map
+import TableOperations: filter
+
+
+
 using Documenter, DocStringExtensions
 
 export LexiconArticle
@@ -39,6 +45,7 @@ export lexicon
 export lsj
 export lewis_short
 export lookup
+export lemmata
 
 include("lexentry.jl")
 include("lexicon.jl")

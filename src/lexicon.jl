@@ -145,3 +145,21 @@ $(SIGNATURES)
 function columns(lexicon::Lexicon)
     Tables.columns(lexicon.passages)
 end
+
+
+#= Implement TablesOperations.jl interface
+"""Map entries in `lexicon` with function `f`.
+$(SIGNATURES)
+"""
+function map(f, lexicon::Lexicon)
+    @warn("Mapping lexicon with ", f)
+    map(f, lexicon.entries)
+end
+
+"""Filter `lexicon` with function `f`.
+$(SIGNATURES)
+"""
+function filter(f, lexicon::Lexicon)
+    filter(f, lexicon.entries)
+end
+=#
