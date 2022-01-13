@@ -30,6 +30,7 @@ using Documenter, DocStringExtensions
 export LexiconArticle
 export Lexicon
 
+export lexicon
 export lsj
 export lewis_short
 

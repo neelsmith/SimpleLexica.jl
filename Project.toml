@@ -9,7 +9,6 @@ CitableObject = "e2b2f5ea-1cd8-4ce8-9b2b-05dad64c2a57"
 CiteEXchange = "e2e9ead3-1b6c-4e96-b95f-43e6ab899178"
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
-HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
@@ -18,5 +17,4 @@ CitableObject = "0.11"
 CiteEXchange = "0.9"
 DocStringExtensions = "0.8"
 Documenter = "0.27"
-HTTP = "0.9"
 julia = "1"
