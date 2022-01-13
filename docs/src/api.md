@@ -10,6 +10,7 @@ Lexicon
 Functions:
 
 ```@docs
+lexicon
 lewis_short
 lsj
 lemma
