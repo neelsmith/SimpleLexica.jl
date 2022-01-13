@@ -12,4 +12,6 @@ Functions:
 ```@docs
 lewis_short
 lsj
+lemma
+article
 ```

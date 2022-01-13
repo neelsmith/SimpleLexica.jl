@@ -11,13 +11,15 @@ Pkg.activate(".")
 Pkg.instantiate()
 
 
-using Documenter, DocStringExtensions, CitableBase
+using Documenter, DocStringExtensions, SimpleLexica
 
 makedocs(
     sitename = "SimpleLexica.jl",
     pages = [
         "Home" => "index.md",
         "User's guide"=> Any[
+            "Quick introduction" => "tldr.md",
+            "Data types" => "datatypes.md",
             "Motivation and background" => "why.md"
         ],
         "API documentation" => "api.md"

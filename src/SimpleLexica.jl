@@ -28,15 +28,18 @@ import CitableBase: citablecollectiontrait
 using Documenter, DocStringExtensions
 
 export LexiconArticle
-export Lexicon
+export lemma, article
 
+export Lexicon
 export lexicon
 export lsj
 export lewis_short
+export lookup
 
 include("lexentry.jl")
 include("lexicon.jl")
-include("lewisshort.jl")
-include("lsj.jl")
+include("shorthands.jl")
+include("lookup_search.jl")
+
 
 end # module
