@@ -8,14 +8,17 @@ $(SIGNATURES)
 function search(lex::Lexicon, s::AbstractString, searchtype::SearchType = ALL; 
     simplified = nothing, case_sensitive = true)
     
-    searchable = isnothing(simplified) ? simplify(lex, case_sensitive = case_sensitive) : simplified
-    if searchtype == LEMMA
-        filter(entry -> contains(lemma(entry), s), lex.entries)
+    searchable = isnothing(simplified) ? simplify(lex, case_sensitive = case_sensitive) : simplified.entries
+    query = case_sensitive ? s : lowercase(s)
+    results = if searchtype == LEMMA  
+        filter(entry -> contains(lemma(entry), query), searchable) 
     elseif searchtype == ARTICLE
-        filter(entry -> contains(article(entry), s), lex.entries)
+        filter(entry -> contains(article(entry), query), searchable)
     else
-        filter(entry -> contains(lemma(entry), s) || contains(article(entry), s), lex.entries)
+        filter(entry -> contains(lemma(entry), query) || contains(article(entry), query), searchable)
     end
+
+    
 end
 
 
