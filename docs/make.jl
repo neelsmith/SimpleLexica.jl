@@ -20,7 +20,7 @@ makedocs(
         "User's guide"=> Any[
             "The Lexicon Article" => "article.md",
             "The Lexicon" => "lexicon.md",
-            "Motivation and background" => "why.md"
+            "Background and Motivation" => "why.md"
         ],
         "API documentation" => "api.md"
     ]
