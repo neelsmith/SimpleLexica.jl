@@ -7,3 +7,13 @@ Contents:
 - quick how-to
 - introduction to data types
 - API reference
+
+
+```@contents
+Pages = ["article.md",
+    "lexicon.md",
+    "why.md",
+    "api.md"
+]
+Depth = 3
+```
