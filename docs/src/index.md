@@ -1,6 +1,8 @@
 # SimpleLexica
 
-> **Background**: see [section on motivation and background](./why/).
+!!! note "Background"
+
+    See the section of this guide on [background and motivation for `SimpleLexica.jl`](./why/).
 
 
 ## TL;DR
