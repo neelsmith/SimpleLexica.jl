@@ -13,7 +13,7 @@ using SimpleLexica
 #latdict = lewis_short()
 ```
 
-(The parallel function to load Liddell and Scott's *Greek Lexicon* is `lsj`.)
+(The parallel function to load Liddell and Scott's *Greek Lexicon* is `lsj()`.)
 
 Search for a string:
 
