@@ -31,6 +31,9 @@ import CitableBase: cex
 import CitableBase: citablecollectiontrait
 
 using Tables
+import Tables: istable
+import Tables: rows
+import Tables: columns
 
 
 using Documenter, DocStringExtensions

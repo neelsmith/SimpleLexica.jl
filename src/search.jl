@@ -10,11 +10,11 @@ function search(lex::Lexicon, s::AbstractString, searchtype::SearchType = ALL;
     "Search for $(searchtype)"
     searchable = isnothing(simplified) ? simplify(lex) : simplified
     if searchtype == LEMMA
-        filter(entry -> contains(lemma(entry), s), lex)
+        filter(entry -> contains(lemma(entry), s), lex.entries)
     elseif searchtype == ARTICLE
-        filter(entry -> contains(article(entry), s), lex)
+        filter(entry -> contains(article(entry), s), lex.entries)
     else
-        filter(entry -> contains(lemma(entry), s) || contains(article(entry), s), lex)
+        filter(entry -> contains(lemma(entry), s) || contains(article(entry), s), lex.entries)
     end
 end
 
