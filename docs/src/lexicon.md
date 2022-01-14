@@ -6,6 +6,7 @@ root = pwd() |> dirname |> dirname
 
 
 ```@example lex
+using SimpleLexica
 f = joinpath(root, "test", "resources", "lsj_chicago.cex")
 lex = lexicon(f)
 ```

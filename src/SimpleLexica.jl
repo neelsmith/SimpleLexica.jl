@@ -42,8 +42,11 @@ export Lexicon
 export urns, lemmata, articles
 export lexicon, lsj, lewis_short
 export lookup
-export search
 
+
+export SearchType
+export search
+export simplify
 
 include("lexentry.jl")
 include("lexicon.jl")
