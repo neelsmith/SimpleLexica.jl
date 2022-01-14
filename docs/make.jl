@@ -18,7 +18,6 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "User's guide"=> Any[
-            "Quick introduction" => "tldr.md",
             "The Lexicon Article" => "article.md",
             "The Lexicon" => "lexicon.md",
             "Motivation and background" => "why.md"

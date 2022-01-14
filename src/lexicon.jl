@@ -9,6 +9,7 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, lexicon::Lexicon)
+    length(lexicon) == 1 ? print(io, "Lexicon with ", length(lexicon.entries), " article.") :
     print(io, "Lexicon with ", length(lexicon.entries), " articles.")
 end
 

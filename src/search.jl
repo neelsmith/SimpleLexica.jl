@@ -7,20 +7,20 @@ $(SIGNATURES)
 """
 function search(lex::Lexicon, s::AbstractString;  searchtype::SearchType = ALL, 
     simplified = nothing, case_sensitive = true)
-    searchable = isnothing(simplified) ? simplify(lex, case_sensitive = case_sensitive) : simplified.entries
+    searchable = isnothing(simplified) ? simplify(lex, case_sensitive = case_sensitive) : simplified
     query = case_sensitive ? s : lowercase(s)
    
     results = []
     if searchtype == LEMMA  
-        for idx in findall(a -> contains(lemma(a), query), searchable)
+        for idx in findall(a -> contains(lemma(a), query), searchable.entries)
             push!(results, lex.entries[idx])
         end
     elseif searchtype == ARTICLE
-        for idx in findall(a -> contains(article(a), query), searchable)
+        for idx in findall(a -> contains(article(a), query), searchable.entries)
             push!(results, lex.entries[idx])
         end
     else
-        for idx in findall(a -> contains(article(a), query ) || contains(lemma(a), query), searchable)
+        for idx in findall(a -> contains(article(a), query ) || contains(lemma(a), query), searchable.entries)
             push!(results, lex.entries[idx])
         end
     end
@@ -40,7 +40,7 @@ Removes all non-alphabetic characters, and sim
 $(SIGNATURES)
 """
 function simplify(s::AbstractString; case_sensitive = true)
-    Unicode.normalize(filter(c -> isletter(c) || c == ' ',  s), stripmark = true)
+    Unicode.normalize(filter(c -> isletter(c) || c == ' ',  s), stripmark = true) 
 end
 
 """Simplify a string for searching.
@@ -48,6 +48,6 @@ Removes all non-alphabetic characters, and sim
 $(SIGNATURES)
 """
 function simplify(lex::Lexicon; case_sensitive = true)
-    case_sensitive ? map(art -> LexiconArticle(art.seq, urn(art), simplify(lemma(art)), simplify(article(art))), lex) :
-    map(art -> LexiconArticle(art.seq, urn(art), simplify(lemma(art)), simplify(article(art))), lex) .|> lc
+    case_sensitive ? map(art -> LexiconArticle(art.seq, urn(art), simplify(lemma(art)), simplify(article(art))), lex) |> Lexicon :
+    map(art -> LexiconArticle(art.seq, urn(art), simplify(lemma(art)), simplify(article(art))), lex) .|> lc |> Lexicon
 end
