@@ -1,18 +1,33 @@
 # API documentation
 
-A citable object and a citable collection:
+A citable object:
 
 ```@docs
 LexiconArticle
-Lexicon
+lemma
+article
 ```
 
-Functions:
+A citable collection:
 
 ```@docs
+Lexicon
 lexicon
 lewis_short
 lsj
-lemma
-article
+urns
+lemmata
+articles
+```
+
+
+```@docs
+lookup
+search
+```
+
+Internal functions:
+
+```@docs
+SimpleLexica.simplify
 ```

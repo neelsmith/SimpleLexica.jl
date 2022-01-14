@@ -1,4 +1,5 @@
 module SimpleLexica
+using Unicode
 
 import Base: show
 import Base: ==
@@ -30,11 +31,6 @@ import CitableBase: cex
 import CitableBase: citablecollectiontrait
 
 using Tables
-#=
-using TableOperations
-import TableOperations: map
-import TableOperations: filter
-=#
 
 
 using Documenter, DocStringExtensions
@@ -43,16 +39,17 @@ export LexiconArticle
 export lemma, article
 
 export Lexicon
-export lexicon
-export lsj
-export lewis_short
+export urns, lemmata, articles
+export lexicon, lsj, lewis_short
 export lookup
-export lemmata
+export search
+
 
 include("lexentry.jl")
 include("lexicon.jl")
-include("shorthands.jl")
-include("lookup_search.jl")
+include("constructors.jl")
+include("lookup.jl")
+include("search.jl")
 
 
 end # module
