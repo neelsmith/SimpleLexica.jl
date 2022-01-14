@@ -1,6 +1,6 @@
 # SimpleLexica
 
-**Background**: see section on motivation and background (link below).
+> **Background**: see [section on motivation and background](./why).
 
 
 ## TL;DR
