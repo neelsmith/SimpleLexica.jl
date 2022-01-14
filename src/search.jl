@@ -17,8 +17,11 @@ function search(lex::Lexicon, s::AbstractString, searchtype::SearchType = ALL;
     else
         filter(entry -> contains(lemma(entry), query) || contains(article(entry), query), searchable)
     end
-
-    
+    formatted = []
+    for res in results
+        push!(formatted, lookup(urn(res), lex))
+    end
+    formatted
 end
 
 
