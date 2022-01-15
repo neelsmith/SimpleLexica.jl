@@ -17,12 +17,17 @@ lsn6559 = LexiconArticle(seqnum, urn6559, lemma, body)
 Extract fields of an article with the functions `urn`, `lemma` or `article`.
 
 
+```@example article
+urn(lsn6559)
+```
+
+
+```@example article
+lemma(lsn6559)
+```
 
 ```@example article
 article(lsn6559)
 ```
 
-```@example article
-urn(lsn6559)
-```
 

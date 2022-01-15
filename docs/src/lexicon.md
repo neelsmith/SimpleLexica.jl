@@ -70,14 +70,14 @@ urns(beer)
 
 ### Optimizing searches
 
-`SimpleLexica` uses a tidied up, parallel lexicon to search on, then returns the results from the initial, fully formatted lexicon.  If no parallel lexicon is provided, it creates one by stripping the text of lemmata and article bodies to alphabetic characters with all diacritics removed.  You can create a parallel lexicon stripped down in this way with the `simplify` method.
+`SimpleLexica` uses a tidied up, parallel lexicon to search on, then returns the results from the initial, fully formatted lexicon.  If no parallel lexicon is provided, it creates one by stripping the text of lemmata and article bodies to alphabetic characters with all diacritics removed.  You can create a parallel lexicon for your own use stripped down in this way with the `simplify` method.
 
 
 ```@example lex
 searchable = simplify(greeklex)
 ```
 
-Since this can take a full second or even more on a consumer-level laptop for a lexicon as large as Liddle-Scott, you can reuse a searchable lexicon by providing it in an optional `simplified` parameter.  This can greatly increase the performance of your search.
+Since this can take a full second or even more on a consumer-level laptop for a lexicon as large as Liddle-Scott, you can reuse a searchable lexicon by providing it in an optional `simplified` parameter.  This can greatly increase the performance of searches.
 
 ```@example lex
  search(greeklex, "ζυθος", simplified = searchable)
