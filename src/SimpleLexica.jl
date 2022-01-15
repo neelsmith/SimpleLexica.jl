@@ -35,10 +35,9 @@ import Tables: istable
 import Tables: rows
 import Tables: columns
 
-
 using Documenter, DocStringExtensions
 
-export LexiconArticle
+export AbstractLexiconArticle,LexiconArticle
 export lemma, article
 
 export Lexicon
@@ -51,8 +50,12 @@ export SearchScope
 export search
 export simplify
 
+
+
+include("abstract.jl")
 include("lexentry.jl")
 include("lexicon.jl")
+include("lycian.jl")
 include("constructors.jl")
 include("lookup.jl")
 include("search.jl")

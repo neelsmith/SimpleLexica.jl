@@ -2,7 +2,7 @@
 """A lexicon comprising a list of simple `LexiconArticle`s.
 """
 struct Lexicon
-    entries::Vector{LexiconArticle}
+    entries::Vector{<: AbstractLexiconArticle}
 end
 
 """Override `show` for `Lexicon`.

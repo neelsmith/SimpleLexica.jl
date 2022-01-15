@@ -1,7 +1,7 @@
 name = "SimpleLexica"
 uuid = "8970d5fd-81b2-46cd-bbc5-7585a55eff67"
 authors = ["Neel Smith  <dnsmith.neel@gmail.com>"]
-version = "0.2.0"
+version = "0.3.0"
 
 [deps]
 CitableBase = "d6f014bd-995c-41bd-9893-703339864534"

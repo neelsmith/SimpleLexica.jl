@@ -1,6 +1,6 @@
 
 "A simple lexicon article."
-struct LexiconArticle <: Citable
+struct LexiconArticle <: AbstractLexiconArticle
     seq::Int64
     urn::Cite2Urn
     lemma::AbstractString
