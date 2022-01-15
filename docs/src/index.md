@@ -8,7 +8,7 @@
 ## TL;DR
 
 
-Load Lewis-Short *Latin Dictionary* from Christopher Blackwell's github repository into a `Lexicon`:
+Load Lewis and Short's *Latin Dictionary* from Christopher Blackwell's github repository into a `Lexicon`:
 
 ```@example quick
 using SimpleLexica
@@ -23,7 +23,7 @@ Search for a string:
 barbar = search(latdict, "barbarian")
 ```
 
-Get text of articles from a `Lexicon`.
+Get the text of articles from a `Lexicon`.
 
 ```@example quick
 articles(barbar)

@@ -3,7 +3,7 @@
 
 ## Constructing and accessing basic structures
 
-The `LexiconArticle`, a citable object:
+### The `LexiconArticle`, a citable object
 
 ```@docs
 LexiconArticle
@@ -11,7 +11,7 @@ lemma
 article
 ```
 
-The `Lexicon`, a citable collection:
+### The `Lexicon`, a citable collection
 
 ```@docs
 Lexicon
