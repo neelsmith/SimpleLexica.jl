@@ -62,6 +62,9 @@ articles(beer)
 ```
 
 
+```@example lex
+lemmata(beer)
+```
 
 ```@example lex
 urns(beer)
