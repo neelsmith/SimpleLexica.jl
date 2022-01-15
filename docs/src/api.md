@@ -1,6 +1,9 @@
 # API documentation
 
-A citable object:
+
+## Constructing and accessing basic structures
+
+The `LexiconArticle`, a citable object:
 
 ```@docs
 LexiconArticle
@@ -8,7 +11,7 @@ lemma
 article
 ```
 
-A citable collection:
+The `Lexicon`, a citable collection:
 
 ```@docs
 Lexicon
@@ -20,14 +23,10 @@ lemmata
 articles
 ```
 
+## Using a lexicon
 
 ```@docs
 lookup
 search
-```
-
-Internal functions:
-
-```@docs
-SimpleLexica.simplify
+simplify
 ```
