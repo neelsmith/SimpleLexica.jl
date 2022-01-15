@@ -3,22 +3,20 @@
 
 ## The nineteenth and twentieth centuries
 
-Lewis and Short's *Latin Dictionary* and especially Liddell and Scott's *Greek-English Lexicon* are monuments of nineteenth-century scholarship. Despite their Victorian language, they remain essential reference works today for their  delineation of the historical evolution carefully distinguished senses of words, supported by cited quotations from ancient sources.
+Lewis and Short's *Latin Dictionary* and especially Liddell and Scott's *Greek-English Lexicon* are monuments of nineteenth-century scholarship. Despite their Victorian language, they remain essential reference works today for their delineation of carefully distinguished senses of words, supported by cited quotations from ancient sources.
 
-In the late twentieth century, both of these public-domain documents were digitized by the Perseus project.  This was an equally colossal achievement that has yet to be adequately recognized or perhaps even broadly understood in the discipline of classical studies.  The texts were keyboarded, and the encoded visual formatting information then parsed algorithmically to create digital editions validating against the [Text Encoding Initiative](https://tei-c.org)'s schemas.
-
-
-## The TEI Dictionaries module
-
-Some would describe the TEI [guidelines for encoding dictionaries](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/DI.html#DIEN) as "rich"; all would agree that they are complex.  They support explicit annotation of an extraodinary variety of data, including, for example, elaborate structures for encoding etymological, morphological and orthographic information.
-
-The original Perseus applications using the lexica used the TEI markup to link a selection of cross references to other texts in the Perseus corpus, and to highlight the HTML display of dictionary entries for human readers. I am aware of no applications making further use of the semantics of the TEI semantics in the past thirty years, so it is probaby fair to consider these structures "write only":  it is possible to compose validly structured TEI content, but not feasibly to use it.  In any case, for scholars who want to work with the TEI edition, the full TEI XML can be freely downloaded as part of the [Perseus Greek and Latin texts package](https://www.perseus.tufts.edu/hopper/opensource/download).
+In the late twentieth century, both of these public-domain documents were digitized by the Perseus project. The texts were keyboarded, and the encoded visual formatting information then parsed algorithmically to create digital editions validating against the [Text Encoding Initiative](https://tei-c.org)'s schemas. This colossal achievement, yet to be adequately recognized or perhaps even broadly understood in the discipline of classical studies, is testimony to the exceptional work of both the original editors and typesetters, and the digital editors and coders.
 
 
+### The TEI Dictionaries module
+
+Some might describe the TEI [guidelines for encoding dictionaries](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/DI.html#DIEN) as "rich"; anyone would agree that they are complex.  They support explicit annotation of an extraodinary variety of data, including, for example, elaborate structures for encoding etymological, morphological and orthographic information.
+
+The original Perseus web applications used the TEI markup to link a selection of citations to other texts in the Perseus corpus, and to highlight the HTML display of dictionary entries for human readers. I am aware of no application that has made further use of the semantics of the TEI document. If, over thirty years, the XML markup has been used primarily to reconvert the semantic markup of the TEI edition to  the visual formatting of the print editions, it is probaby fair to consider these structures "write only": it is possible to compose validly structured TEI content, but not feasible to use it.  In any case, for scholars who want to work with the full richness of the TEI edition, the XML can be freely downloaded as part of the [Perseus Greek and Latin texts package](https://www.perseus.tufts.edu/hopper/opensource/download), but the XML structure of a TEI dictionary poses substantial challenges to two functions scholars frequently look for:  looking up an entry by a unique identifier, and searching the text content of articles. 
 
 ## Markdown lexica
 
-The XML structure of a TEI dictionary poses significant challenges for two of the most frequent functions scholars could look for:  finding an entry by a unique identifier, and searching the text content of articles.  In the early twenty-first century, Christopher Blackwell addressed both of those concerns with derivative editions formatted in markdown. Lexicon entries are organized in four simple fields:  
+In the early twenty-first century, Christopher Blackwell addressed both of those concerns with derivative editions formatted in markdown. Lexicon entries are organized in four simple fields:  
 
 1. a sequence number giving its position in the lexicon
 2. a URN uniquely identifying each entry

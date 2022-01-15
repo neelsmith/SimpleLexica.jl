@@ -19,9 +19,9 @@ makedocs(
         "Home" => "index.md",
         "User's guide"=> Any[
             "The Lexicon Article" => "article.md",
-            "The Lexicon" => "lexicon.md",
-            "Background and Motivation" => "why.md"
+            "The Lexicon" => "lexicon.md"
         ],
+        "Background and Motivation" => "why.md",
         "API documentation" => "api.md"
     ]
     )
