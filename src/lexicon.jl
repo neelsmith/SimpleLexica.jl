@@ -9,9 +9,11 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, lexicon::Lexicon)
+    length(lexicon) == 1 ? print(io, "Lexicon with ", length(lexicon.entries), " article.") :
     print(io, "Lexicon with ", length(lexicon.entries), " articles.")
 end
 
+# Collectoin trait
 
 "Singleton type for value of CitableCollectionTrait"
 struct CitableLexicon <: CitableCollectionTrait end
@@ -24,6 +26,8 @@ function citablecollectiontrait(::Type{Lexicon})
     CitableLexicon()
 end
 
+
+# CEX trait
 "Singleton type for value of `CexTrait`"
 struct LexiconCex <: CexTrait end
 
@@ -41,20 +45,13 @@ function cex(lexicon::Lexicon; delimiter = "|")
 end
 
 
-"""Instantiate a `Lexicon` from delimited text.
+"""Instantiate a `Lexicon` from lines of delimited text.
 $(SIGNATURES)
-When `strict` is true, uses URN filtering to extract lexicon
-data from CEX source.  When `strict` is false, the assumption is
-that you are using one of Christopher Blackwell's CEX sources, and you
-have extracted a single CEX block of lines to parse.
 """
 function fromcex(trait::LexiconCex, cexsrc::AbstractString, T;
     delimiter = "|", configuration = nothing, strict = true)
-    if strict
-        @warn("Strict parsing not yet implemented.")
-    end
     entries = []
-    for ln in split(cexsrc, "\n")[2:end]
+    for ln in split(cexsrc, "\n")
         if !isempty(ln)
             push!(entries, fromcex(ln, LexiconArticle, delimiter = delimiter))
         end
@@ -62,3 +59,90 @@ function fromcex(trait::LexiconCex, cexsrc::AbstractString, T;
     Lexicon(entries)
 end
 
+
+# URN comparison trait
+"Singleton type for value of `UrnComparisonTrait`."
+struct LexiconComparable <: UrnComparisonTrait end
+"""Define value of `urncomparisontrait` for `Lexicon`.
+$(SIGNATURES)
+"""
+function urncomparisontrait(::Type{Lexicon})
+    LexiconComparable()
+end
+
+
+"""Filter `lexicon` for entries with urn matching `u` for equality.
+$(SIGNATURES)
+"""
+function urnequals(u::Cite2Urn, lexicon::Lexicon)
+    filter(item -> urnequals(item.urn, u), lexicon.entries)
+end
+
+
+"""Filter `lexicon` for entries with urn matching `u` for containment.
+$(SIGNATURES)
+"""
+function urncontains(u::Cite2Urn, lexicon::Lexicon)
+    filter(item -> urncontains(item.urn, u), lexicon.entries)
+end
+
+
+"""Filter `lexicon` for entries with urn matching `u` for similarity.
+$(SIGNATURES)
+"""
+function urnsimilar(u::Cite2Urn, lexicon::Lexicon)
+    filter(item -> urnsimilar(item.urn, u), lexicon.entries)
+end
+
+
+# Iteration
+"""Iterate `lexicon` with no state.
+$(SIGNATURES)
+"""
+function iterate(lexicon::Lexicon)
+    isempty(lexicon.entries) ? nothing : (lexicon.entries[1], 2)
+end
+
+"""Iterate `lexicon` with state parameter.
+$(SIGNATURES)
+"""
+function iterate(lexicon::Lexicon, state)
+    state > length(lexicon.entries) ? nothing : (lexicon.entries[state], state + 1)
+end
+
+"""Number of entries in `lexicon`.
+$(SIGNATURES)
+"""
+function length(lexicon::Lexicon)
+    length(lexicon.entries)
+end
+
+"""Type of elements in `lexicon`.
+$(SIGNATURES)
+"""
+function eltype(lexicon::Lexicon)
+    LexiconArticle
+end
+
+
+# Implement Tables.jl interface
+"""Define `Lexicon` as implementing `Tables`.
+$(SIGNATURES)
+"""
+function istable(lexicon::Lexicon)
+    true
+end
+
+"""Implement `rows` function for `Lexicon`.
+$(SIGNATURES)
+"""
+function rows(lexicon::Lexicon)
+    Tables.rows(lexicon.entries)
+end
+
+"""Implement `columns` function for `Lexicon`.
+$(SIGNATURES)
+"""
+function columns(lexicon::Lexicon)
+    Tables.columns(lexicon.entries)
+end

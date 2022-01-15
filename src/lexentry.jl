@@ -7,6 +7,8 @@ struct LexiconArticle <: Citable
     article::AbstractString
 end
 
+# Override `Base` functions:
+
 """Override `show` for `LexiconArticle`.
 $(SIGNATURES)
 """
@@ -20,6 +22,24 @@ $(SIGNATURES)
 function ==(lex1::LexiconArticle, lex2::LexiconArticle)
    lex1.seq == lex2.seq && lex1.urn == lex2.urn && lex1.lemma == lex2.lemma && lex1.article == lex2.article
 end
+
+# Access to fields
+"""Lemma or heading for a `LexiconArticle`.
+$(SIGNATURES)
+"""
+function lemma(lexart::LexiconArticle)
+    lexart.lemma
+end
+
+
+"""Body of article for a `LexiconArticle`.
+$(SIGNATURES)
+"""
+function article(lexart::LexiconArticle)
+    lexart.article
+end
+
+
 
 # CitableTrait:
 """Singleton type for value of `CitableTrait`.

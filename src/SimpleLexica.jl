@@ -1,7 +1,12 @@
 module SimpleLexica
+using Unicode
 
 import Base: show
 import Base: ==
+
+import Base: iterate
+import Base: length
+import Base: eltype
 
 using CiteEXchange
 using CitableObject
@@ -23,16 +28,34 @@ import CitableBase: cextrait
 import CitableBase: fromcex
 import CitableBase: cex
 
-
 import CitableBase: citablecollectiontrait
+
+using Tables
+import Tables: istable
+import Tables: rows
+import Tables: columns
 
 
 using Documenter, DocStringExtensions
 
 export LexiconArticle
+export lemma, article
+
 export Lexicon
+export urns, lemmata, articles
+export lexicon, lsj, lewis_short
+export lookup
+
+
+export SearchScope
+export search
+export simplify
 
 include("lexentry.jl")
 include("lexicon.jl")
+include("constructors.jl")
+include("lookup.jl")
+include("search.jl")
+
 
 end # module
