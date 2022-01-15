@@ -47,7 +47,7 @@ export lexicon, lsj, lewis_short
 export lookup
 
 
-export SearchType
+export SearchScope
 export search
 export simplify
 

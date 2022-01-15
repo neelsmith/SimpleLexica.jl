@@ -1,21 +1,26 @@
 
 """Enumeration of types of search."""
-@enum SearchType LEMMA=1 ARTICLE=2 ALL=3
+@enum SearchScope LEMMA=1 ARTICLE=2 ALL=3
 
-"""Search lexicon for string.
+"""Search lexicon `lex` for string `s`.
 $(SIGNATURES)
+Optional parameters:
+
+- `searchscope`: one of `SearchScope.LEMMA`, `SearchScope.ARTICLE`, or `SearchScope.ALL`.  Default: `SearchScope.ALL`.
+- `simplified`: a `Lexicon` formatted for searching.  Default: `nothing`.
+- `case_sensitive`: true if case should be taken into account in matching.  Default: `true`.
 """
-function search(lex::Lexicon, s::AbstractString;  searchtype::SearchType = ALL, 
+function search(lex::Lexicon, s::AbstractString;  searchscope::SearchScope = ALL, 
     simplified = nothing, case_sensitive = true)
     searchable = isnothing(simplified) ? simplify(lex, case_sensitive = case_sensitive) : simplified
     query = case_sensitive ? s : lowercase(s)
    
     results = []
-    if searchtype == LEMMA  
+    if searchscope == LEMMA  
         for idx in findall(a -> contains(lemma(a), query), searchable.entries)
             push!(results, lex.entries[idx])
         end
-    elseif searchtype == ARTICLE
+    elseif searchscope == ARTICLE
         for idx in findall(a -> contains(article(a), query), searchable.entries)
             push!(results, lex.entries[idx])
         end
@@ -36,15 +41,17 @@ function lc(lexentry::LexiconArticle)
 end
 
 """Simplify a string for searching.
-Removes all non-alphabetic characters, and sim
+Removes all non-alphabetic characters, and strips diacritics.
+If `case_sensitive` is `false`, makes all text lower case.
 $(SIGNATURES)
 """
 function simplify(s::AbstractString; case_sensitive = true)
     Unicode.normalize(filter(c -> isletter(c) || c == ' ',  s), stripmark = true) 
 end
 
-"""Simplify a string for searching.
-Removes all non-alphabetic characters, and sim
+"""Simplify the lemmata and article bodies of lexicon entries for searching.
+Removes all non-alphabetic characters, and strips diacritics.
+If `case_sensitive` is `false`, makes all text lower case.
 $(SIGNATURES)
 """
 function simplify(lex::Lexicon; case_sensitive = true)

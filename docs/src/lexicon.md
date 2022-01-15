@@ -43,14 +43,14 @@ By default, the `SimpleLexica` package searches both the lemma and the article b
 beer = search(greeklex, "ζυθος")
 ```
 
-You can limit the search to one or the other field by setting the `searchtype` parameter to `SimpleLexica.LEMMA` or `SimpleLexica.ARTICLE`.
+You can limit the search to one or the other field by setting the `searchscope` parameter to `SimpleLexica.LEMMA` or `SimpleLexica.ARTICLE`.
 
 ```@example lex
- search(greeklex, "ζυθος", searchtype=SimpleLexica.LEMMA)
+ search(greeklex, "ζυθος", searchscope=SimpleLexica.LEMMA)
 ```
 
 ```@example lex
- search(greeklex, "ζυθος", searchtype=SimpleLexica.ARTICLE)
+ search(greeklex, "ζυθος", searchscope=SimpleLexica.ARTICLE)
 ```
 
 
