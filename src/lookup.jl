@@ -33,7 +33,7 @@ function articles(lex::Lexicon)
     map(artcl -> article(artcl), lex)
 end
 
-"""Extract articles from a lexicon.
+"""Extract URNs from a lexicon.
 $(SIGNATURES)
 """
 function urns(lex::Lexicon)
