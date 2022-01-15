@@ -7,7 +7,7 @@ root = pwd() |> dirname |> dirname
 
 The `Lexicon` type wraps a Vector of `LexiconArticles`.  You can load Liddell-Scott's *Greek Lexicon* from Christopher Blackwell's github repository with `lsj()` and Lewis and Short's *Latin Dictionary* with `lewis-short()`.  Performance will depend primarily on the throughput of your internet connection.
 
-Both repositories are licensed under the terms of the *CC 3.0 BY-NC-SA* license.  If you have downloaded a copy of one of these files, you can load it from a local file with the `lexicon` function.
+Both repositories are licensed under the terms of the *CC 3.0 BY-NC-SA* license.  If you have downloaded a copy of one of these files, you can load it from a local file with the `lexicon` function.  The following code block loads a copy of the LSJ lexicon in the `test/resources` directory of the `SimpleLexica.jl` github repository.
 
 
 ```@example lex
@@ -37,13 +37,13 @@ lookup(beer_urn, greeklex)
 
 ## Searching
 
-By default, the `SimpleLexica` package searches the lemma and article body for entries matching a given string.
+By default, the `SimpleLexica` package searches both the lemma and the article body for entries matching a given string.
 
 ```@example lex
 beer = search(greeklex, "ζυθος")
 ```
 
-You can limit the search to one or the other by setting the `searchtype` parameter to `SimpleLexica.LEMMA` or `SimpleLexica.ARTICLE`.
+You can limit the search to one or the other field by setting the `searchtype` parameter to `SimpleLexica.LEMMA` or `SimpleLexica.ARTICLE`.
 
 ```@example lex
  search(greeklex, "ζυθος", searchtype=SimpleLexica.LEMMA)
@@ -70,14 +70,14 @@ urns(beer)
 
 ### Optimizing searches
 
-`SimpleLexica` prepares a parallel lexicon to search on, then returns the results from the initial lexicon.  If no parallel lexicon is provided, it prepares one by stripping the text of lemmata and article bodies to alphabetic characters with all diacritics removed.  You can create a parallel lexicon stripped down in this way with the `simplify` method.
+`SimpleLexica` uses a tidied up, parallel lexicon to search on, then returns the results from the initial, fully formatted lexicon.  If no parallel lexicon is provided, it creates one by stripping the text of lemmata and article bodies to alphabetic characters with all diacritics removed.  You can create a parallel lexicon stripped down in this way with the `simplify` method.
 
 
 ```@example lex
 searchable = simplify(greeklex)
 ```
 
-Since this can take a second or more for a lexicon as large as Liddle-Scott on a consumer-level laptop, you can supply a stripped-down lexicon in an optional `simplified` parameter.  This can greatly increase the performance of your search.
+Since this can take a full second or even more on a consumer-level laptop for a lexicon as large as Liddle-Scott, you can reuse a searchable lexicon by providing it in an optional `simplified` parameter.  This can greatly increase the performance of your search.
 
 ```@example lex
  search(greeklex, "ζυθος", simplified = searchable)
